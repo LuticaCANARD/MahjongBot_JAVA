@@ -30,6 +30,12 @@ jobs:
         chmod +x ./gradlew
     - name: Build with Gradle
       run: ./gradlew build
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: compileResult
+        path: build/libs/*.jar
   deploy:
     needs: build
     runs-on: ubuntu-latest
